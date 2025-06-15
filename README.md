@@ -2,6 +2,8 @@
 
 A full-stack expense splitting app to help friends track and settle shared expenses seamlessly.
 
+[Visit the deployed frontend](https://sharejar.vercel.app/)
+
 ---
 
 ## 🖼️ UI Preview
