@@ -1,0 +1,523 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root {
+  /* Color Palette */
+  --primary-color: #3f51b5; /* Indigo */
+  --primary-color-dark: #303f9f;
+  --primary-color-light: #c5cae9;
+  --accent-color: #ffc107; /* Amber */
+  --accent-color-dark: #ffa000;
+
+  --success-color: #4CAF50; /* Green */
+  --error-color: #f44336; /* Red */
+  --info-color: #2196F3; /* Blue */
+
+  /* Text & Backgrounds */
+  --text-color: #333;
+  --text-color-light: #666;
+  --bg-color-light: #f7f7f7; /* Lighter background */
+  --bg-color-medium: #e0e0e0;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --border-color-dark: #ccc;
+
+  /* Spacing */
+  --spacing-xs: 5px;
+  --spacing-s: 10px;
+  --spacing-m: 15px;
+  --spacing-l: 20px;
+  --spacing-xl: 30px;
+
+  /* Shadows */
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-deep: 0 6px 20px rgba(0, 0, 0, 0.1);
+
+  /* Borders */
+  --border-radius: 8px;
+  --border-radius-small: 4px;
+}
+
+/* Basic HTML Element Styling */
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color-light);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+#root {
+  max-width: 900px; /* Slightly wider */
+  margin: 25px auto; /* Centered with top/bottom margin */
+  padding: var(--spacing-xl);
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-deep);
+  border-radius: var(--border-radius);
+  min-height: calc(100vh - 50px); /* Adjust to viewport height */
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color-dark);
+  margin-top: 0;
+  margin-bottom: var(--spacing-l);
+  font-weight: 500; /* Medium weight for headings */
+}
+
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  color: var(--primary-color);
+}
+h2 {
+  font-size: 1.8em;
+  border-bottom: 1px solid var(--border-color); /* Subtle separator */
+  padding-bottom: var(--spacing-s);
+  margin-bottom: var(--spacing-l);
+}
+h3 {
+  font-size: 1.4em;
+  margin-bottom: var(--spacing-m);
+}
+
+p {
+  margin-bottom: var(--spacing-s);
+}
+
+/* --- Buttons --- */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: var(--spacing-s) var(--spacing-m);
+  border: none;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs); /* Space for icons */
+}
+
+button:hover:not(:disabled) {
+  background-color: var(--primary-color-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-light);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+button:disabled {
+  background-color: var(--border-color);
+  color: var(--text-color-light);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.button-secondary {
+  background-color: var(--info-color);
+}
+.button-secondary:hover:not(:disabled) {
+  background-color: #1976D2; /* Darker blue */
+}
+
+.button-danger {
+  background-color: var(--error-color);
+}
+.button-danger:hover:not(:disabled) {
+  background-color: #d32f2f;
+}
+
+
+/* --- Forms --- */
+form label {
+  display: block;
+  margin-top: var(--spacing-m);
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.95em;
+  color: var(--text-color-light);
+  font-weight: 500;
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea,
+form select {
+  width: calc(100% - var(--spacing-m) * 2); /* Full width minus padding */
+  padding: var(--spacing-s) var(--spacing-m);
+  margin-bottom: var(--spacing-m);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-small);
+  box-sizing: border-box;
+  font-size: 1em;
+  color: var(--text-color);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form textarea:focus,
+form select:focus {
+  border-color: var(--info-color);
+  box-shadow: 0 0 0 3px rgba(var(--info-color-rgb, 33, 150, 243), 0.15);
+  outline: none;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* --- Cards / Sections --- */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-l);
+  margin-bottom: var(--spacing-xl);
+  box-shadow: var(--shadow-medium);
+}
+
+/* --- Messages (Error, Success) --- */
+.message {
+  padding: var(--spacing-m);
+  border-radius: var(--border-radius-small);
+  margin-bottom: var(--spacing-l);
+  font-weight: 500;
+  text-align: center;
+  border: 1px solid transparent; /* Default transparent border */
+}
+
+.error-message {
+  color: var(--error-color);
+  background-color: rgba(var(--error-color-rgb, 244, 67, 54), 0.1);
+  border-color: var(--error-color);
+}
+
+.success-message {
+  color: var(--success-color);
+  background-color: rgba(var(--success-color-rgb, 76, 175, 80), 0.1);
+  border-color: var(--success-color);
+}
+
+/* --- Loading Spinner --- */
+.loading-spinner {
+  border: 4px solid var(--border-color);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: var(--spacing-xs);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* --- Utility Classes --- */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-s);
+    align-items: center;
+}
+
+.flex-item {
+    flex: 1;
+    min-width: 150px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-l { margin-top: var(--spacing-l); }
+.mb-l { margin-bottom: var(--spacing-l); }
+
+/* --- Component Specific Styles --- */
+
+/* Back Link (e.g., on GroupDetailsPage) */
+.back-link {
+  display: inline-flex; /* Use inline-flex for alignment with text */
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-l);
+  font-size: 1.05em;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.back-link:hover {
+  color: var(--primary-color-dark);
+  text-decoration: underline;
+}
+.back-link svg {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+/* CreateGroupPage - Member Input Group */
+.member-input-group {
+  display: flex;
+  gap: var(--spacing-s);
+  margin-bottom: var(--spacing-l);
+}
+.member-input-group input {
+  flex-grow: 1;
+  margin-bottom: 0; /* Override default input margin */
+}
+.member-input-group button {
+  flex-shrink: 0;
+  padding: var(--spacing-s) var(--spacing-m);
+}
+
+/* Added Members List */
+.members-list-container {
+  background-color: var(--bg-color-light); /* Lighter background for the inner card */
+  border: 1px solid var(--border-color-dark);
+  padding: var(--spacing-m);
+  margin-top: var(--spacing-m);
+  box-shadow: inset var(--shadow-light); /* Inner shadow for a recessed look */
+}
+.members-list-container h3 {
+  font-size: 1.1em;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--spacing-xs);
+  margin-top: 0;
+  margin-bottom: var(--spacing-m);
+}
+.members-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.member-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-s) 0;
+  border-bottom: 1px dashed var(--border-color);
+}
+.member-item:last-child {
+  border-bottom: none;
+}
+.member-item span {
+  font-size: 1em;
+  color: var(--text-color-light);
+}
+.remove-member-btn {
+  background-color: transparent; /* Transparent background */
+  border: none;
+  color: var(--error-color); /* Red 'X' */
+  font-size: 1.5em;
+  line-height: 1;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.remove-member-btn:hover {
+  background-color: rgba(var(--error-color-rgb, 244, 67, 54), 0.1);
+  color: var(--error-color);
+}
+
+
+/* GroupDetailsPage Layout */
+.group-details-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column by default */
+    gap: var(--spacing-xl); /* Gap between sections */
+}
+
+@media (min-width: 768px) {
+  .group-details-grid {
+    grid-template-columns: 1fr 1fr; /* Two columns on larger screens */
+    gap: var(--spacing-l);
+  }
+  /* Make the first card span two columns on larger screens */
+  .group-details-grid .card:first-child {
+      grid-column: 1 / -1; /* Spans all columns */
+  }
+}
+
+/* AddExpenseForm specific styling */
+.expense-amount-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-small);
+  margin-bottom: var(--spacing-m);
+  padding-right: var(--spacing-m);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.expense-amount-input:focus-within { /* Apply focus style to parent div */
+  border-color: var(--info-color);
+  box-shadow: 0 0 0 3px rgba(var(--info-color-rgb, 33, 150, 243), 0.15);
+}
+.expense-amount-input span {
+  padding-left: var(--spacing-m);
+  color: var(--text-color-light);
+  font-size: 1.1em;
+  font-weight: 500;
+}
+.expense-amount-input input {
+  border: none; /* Remove border from input inside the custom div */
+  margin-bottom: 0; /* Remove margin from input inside the custom div */
+  flex-grow: 1; /* Allow input to fill space */
+  padding: var(--spacing-s) 0; /* Adjust padding for the input */
+}
+.expense-amount-input input:focus {
+  outline: none; /* Remove default outline as parent handles shadow */
+  box-shadow: none;
+}
+
+/* MemberSelect styling (re-checked for consistency) */
+.member-select-container {
+  margin-bottom: var(--spacing-m);
+}
+.member-select-container label {
+  margin-bottom: var(--spacing-xs);
+  margin-top: var(--spacing-s); /* Adjust top margin for consistency */
+}
+.member-select-container select {
+  width: 100%;
+}
+.member-select-container .flex-container {
+    padding: var(--spacing-s) var(--spacing-m);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    background-color: var(--bg-color-light);
+    align-items: flex-start;
+    flex-wrap: wrap; /* Ensure wrapping */
+    gap: var(--spacing-s); /* Gap for checkboxes */
+}
+.member-select-container .flex-container div { /* Individual checkbox item */
+    display: flex;
+    align-items: center;
+    margin: 0; /* Reset margins */
+    padding: 0;
+    white-space: nowrap; /* Prevent names from breaking */
+}
+.member-select-container input[type="checkbox"] {
+  width: auto;
+  margin-right: var(--spacing-xs);
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+.member-select-container label[for^="paidFor-"],
+.member-select-container label[for^="paidBy-"] {
+  display: inline-block;
+  font-weight: normal;
+  margin-bottom: 0;
+  cursor: pointer;
+  vertical-align: middle;
+  color: var(--text-color); /* Make member names clear */
+  padding-right: var(--spacing-s); /* Space from next checkbox */
+}
+
+
+/* ExpensesList - Individual expense item */
+.expense-item {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--accent-color); /* Highlight bar */
+  border-radius: var(--border-radius-small);
+  padding: var(--spacing-m);
+  margin-bottom: var(--spacing-m);
+  box-shadow: var(--shadow-light);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.expense-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+.expense-item h3 {
+  color: var(--text-color);
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: var(--spacing-xs);
+  font-size: 1.3em;
+  font-weight: 500;
+}
+.expense-item p {
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.9em;
+  color: var(--text-color-light);
+}
+.expense-item strong {
+  color: var(--primary-color-dark);
+}
+.expense-item .expense-amount {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--success-color); /* Green for amount */
+}
+.expense-item .expense-date {
+  text-align: right;
+  font-size: 0.75em;
+  color: var(--text-color-light);
+  margin-top: var(--spacing-s);
+}
+
+/* BalanceSummary - Individual balance item */
+.balance-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+}
+.balance-item {
+  background-color: var(--bg-color-light);
+  border: 1px solid var(--border-color-dark);
+  border-radius: var(--border-radius-small);
+  padding: var(--spacing-s) var(--spacing-m);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1em;
+  color: var(--text-color);
+  box-shadow: var(--shadow-light);
+}
+.balance-item strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+.balance-item .amount {
+  font-weight: bold;
+  color: var(--primary-color-dark);
+  font-size: 1.1em;
+}
+.balance-item .balance-arrow {
+  margin: 0 var(--spacing-s);
+  color: var(--text-color-light);
+}
